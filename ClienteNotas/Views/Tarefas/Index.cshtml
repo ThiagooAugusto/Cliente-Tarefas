@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ClienteNotas.Models.DTO.Tarefa>
+
+@{
+    ViewData["Title"] = "Tarefas";
+}
+
+<h1>Minhas Tarefas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Criar Nova tarefa</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Detalhes</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
